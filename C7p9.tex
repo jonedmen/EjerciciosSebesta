@@ -1,0 +1,34 @@
+\subsubsection{C7 Pregunta 9}
+\begin{lstlisting}
+import java.lang.Math;
+
+public class Cap7ej9 {
+	
+	public static void main (String args[]) {
+		long tiempoinicial, tiempoflotante=0, tiempoentero=0, tiempofinalflotante=0, tiempofinalentero=0;
+		double valor = 0;
+		long valorInt= 0;
+		double valorFloat= 0;
+		valor = Math.random()*1000000000;
+		valor = valor*1000000;
+		valorInt = (long)valor;
+		valorFloat = valor;
+		tiempoinicial = System.nanoTime();
+		valorInt = operacionEntero(valorInt);
+		tiempoentero = System.nanoTime();
+		valorFloat = operacionFlotante(valorFloat);
+		tiempoflotante = System.nanoTime();
+		tiempofinalentero =  tiempoentero - tiempoinicial;
+		tiempofinalflotante = tiempoflotante - tiempoinicial;
+		System.out.println("tiempo long int: "+tiempofinalentero+"\ntiempo double float: "+tiempofinalflotante);
+			}
+	private static double operacionFlotante(double valor){
+		return (double)(valor+valor-valor*valor*valor*Math.pow(valor,100)/valor*Math.pow(valor,100));
+		}
+	private static long operacionEntero(long valor){
+		return (long)(valor+valor-valor*valor*valor*Math.pow(valor,100)/valor*Math.pow(valor,100));
+		}
+}
+ \end{lstlisting}
+
+El programa realiza operaciones para entero y para flotante, siendo estos numeros demasiado grandes, lo que se pide es calcular el tiempo de respuesta al aplicar operaciones aritmeticas a flotante y entero. Los tiempos de respuesta para enteros fue menor a los tiempos de respuesta de flotantes, porque la precision es menor en enteros, mientras flotantes ocupa mas capacidad de memoria para acumular sus valores.
